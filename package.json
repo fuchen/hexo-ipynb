@@ -1,0 +1,30 @@
+{
+  "name": "hexo-ipynb",
+  "version": "0.1.0",
+  "description": "Include iPython Notebook in your hexo post.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuchen/hexo-ipynb.git"
+  },
+  "keywords": [
+    "hexo",
+    "\"ipython",
+    "notebook\""
+  ],
+  "author": "Fu Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fuchen/hexo-ipynb/issues"
+  },
+  "homepage": "https://github.com/fuchen/hexo-ipynb#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-exec": "^1.1.0",
+    "co-fs": "^1.2.0",
+    "minimist": "^1.2.0"
+  }
+}
