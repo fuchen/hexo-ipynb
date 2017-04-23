@@ -3,21 +3,26 @@ const exec = require('co-exec')
 const co = require('co')
 const fs = require('co-fs')
 
+function findPostFromAsset(file) {
+  const Post = hexo.model('Post')
+  const posts = Post.toArray()
+
+  for (var i = 0, len = posts.length; i < len; i++) {
+    let post = posts[i]
+    if (file.source.startsWith(post.asset_dir)) {
+      return post
+    }
+  }
+}
+
 function processPostAsset(file) {
   return co(function *() {
-    const PostAsset = hexo.model('PostAsset')
-    const Post = hexo.model('Post')
-    const id = file.source.substring(hexo.base_dir.length).replace(/\\/g, '/')
-    const doc = PostAsset.findById(id)
-
-    const post = Post.findById(doc.post)
-    if (!post) {
-      return
-    }
-
     if (file.type !== 'skip') {
-      post.updated = new Date(0)
-      post.save()
+      let post = findPostFromAsset(file)
+      if (post) {
+        post.updated = new Date(0)
+        post.save()
+      }
     }
   })
 }
