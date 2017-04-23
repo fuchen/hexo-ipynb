@@ -41,7 +41,10 @@ hexo.extend.tag.register('asset_ipynb', function (args) {
     const ipynbFile = path.join(post.asset_dir, args[0])
 
     let html = yield exec(`python ${PY_SCRIPT} ${ipynbFile}`, {
-      maxBuffer: 5 * 1024 * 1024
+      maxBuffer: 5 * 1024 * 1024,
+      env: {
+        PYTHONIOENCODING: 'utf8'
+      }
     })
 
     return html
